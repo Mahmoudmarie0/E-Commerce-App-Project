@@ -1,0 +1,48 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.ecommerceproject"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId = "com.example.ecommerceproject"
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+}
+
